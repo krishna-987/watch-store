@@ -1,4 +1,4 @@
-const BASE_URL = "https://watch-store-no7y.onrender.com/api/accounts/";
+const BASE_URL = "https://watch-store-nc7y.onrender.com/api/accounts/";
 export const registerUser = async (email, password) => {
   const res = await fetch(BASE_URL + "register/", {
     method: "POST",

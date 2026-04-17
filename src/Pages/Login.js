@@ -17,38 +17,36 @@ function Login() {
     }
 
     try {
-      fetch("https://watch-store-no7y.onrender.com/api/accounts/login/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      });
+      // ✅ FIXED: store response in res
+      const res = await fetch(
+        "https://watch-store-nc7y.onrender.com/api/accounts/login/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+          }),
+        }
+      );
 
       const data = await res.json();
-      localStorage.setItem("token", data.access);
 
-      console.log("LOGIN RESPONSE:", data); // 🔥 debug
+      console.log("LOGIN RESPONSE:", data);
 
-      // ✅ SUCCESS CONDITION (FIXED)
+      // ✅ SUCCESS
       if (res.ok && data.access) {
-        // 🔐 Save token
         localStorage.setItem("token", data.access);
 
         alert("✅ Login successful 🎉");
 
-        // 🔄 Redirect
         navigate("/");
-
-        // 🔥 Reload to connect backend (cart/user)
         window.location.reload();
       } else {
         alert(data.error || "❌ Invalid credentials");
       }
-
     } catch (err) {
       console.error("LOGIN ERROR:", err);
       alert("❌ Server error");
