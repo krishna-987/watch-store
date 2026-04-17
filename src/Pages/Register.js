@@ -16,7 +16,7 @@ function Register() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/accounts/register/", {
+      const res = await fetch("https://watch-store-no7y.onrender.com/api/accounts/register/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

@@ -17,7 +17,7 @@ function Login() {
     }
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/accounts/login/", {
+      fetch("https://watch-store-no7y.onrender.com/api/accounts/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
