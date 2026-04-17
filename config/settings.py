@@ -5,10 +5,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-key'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
-    "watch-store-no7y.onrender.com",
+    "watch-store-nc7y.onrender.com",
     "127.0.0.1",
     "localhost"
 ]
