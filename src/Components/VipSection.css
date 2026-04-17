@@ -1,0 +1,31 @@
+.vip-section {
+  text-align: center;
+  padding: 80px 20px;
+  background: #f8f8f8;
+}
+
+.vip-input {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.vip-input input {
+  padding: 12px;
+  width: 300px;
+  border: 1px solid #ccc;
+}
+
+.vip-input button {
+  padding: 12px 20px;
+  background: #e86c3a;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.vip-msg {
+  margin-top: 15px;
+  color: green;
+  font-size: 14px;
+}

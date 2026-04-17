@@ -1,0 +1,58 @@
+.story-page {
+  padding-top: 70px;
+  text-align: center;
+}
+
+/* HEADER */
+.story-header {
+  margin: 40px 0;
+}
+
+.story-header h2 {
+  letter-spacing: 2px;
+}
+
+/* HERO */
+.story-hero img {
+  width: 80%;
+  max-width: 900px;
+  height: auto;
+}
+
+/* TITLE */
+.story-title {
+  margin: 30px 0;
+}
+
+.story-title h1 {
+  font-size: 28px;
+  letter-spacing: 2px;
+}
+
+.story-title p {
+  color: gray;
+}
+
+/* CONTENT */
+.story-content {
+  max-width: 700px;
+  margin: auto;
+  text-align: left;
+}
+
+.story-content p {
+  margin: 20px 0;
+  line-height: 1.7;
+}
+
+.story-content img {
+  width: 100%;
+  margin: 30px 0;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .story-hero img {
+    width: 100%;
+  }
+}

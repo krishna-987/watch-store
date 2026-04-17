@@ -1,0 +1,88 @@
+.app-page {
+  padding: 100px 20px 60px;
+  text-align: center;
+  background: #fff;
+}
+
+/* HEADER */
+.app-header h2 {
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+.breadcrumb {
+  font-size: 13px;
+  color: gray;
+  margin-top: 5px;
+}
+
+/* CONTENT */
+.app-content {
+  margin-top: 40px;
+}
+
+/* LIST */
+.app-content ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.app-content li {
+  margin: 12px 0;
+  font-size: 15px;
+  color: #444;
+}
+
+/* TITLE */
+.app-content h3 {
+  margin: 30px 0 20px;
+  letter-spacing: 2px;
+}
+
+/* STORE BUTTONS */
+.store-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.store-buttons img {
+  height: 55px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.store-buttons img:hover {
+  transform: scale(1.05);
+}
+
+/* BRAND ICONS */
+.brands {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.brands img {
+  height: 40px;
+  opacity: 0.8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+
+  .store-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .brands {
+    flex-wrap: wrap;
+  }
+
+  .app-header h2 {
+    font-size: 20px;
+  }
+}

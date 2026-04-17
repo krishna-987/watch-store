@@ -1,0 +1,150 @@
+/* BASE */
+.auth-container {
+  max-width: 420px;
+  margin: 80px auto;
+  padding: 20px;
+  width: 100%;
+}
+
+/* TITLE */
+.auth-container h2 {
+  text-align: center;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.auth-sub {
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 30px;
+}
+
+/* FORM */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form label {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.auth-form input {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 14px;
+  width: 100%;
+}
+
+.auth-form input:focus {
+  border-color: black;
+}
+
+/* BUTTON ROW */
+.auth-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap; /* 🔥 important */
+}
+
+.auth-actions button {
+  padding: 12px 25px;
+  background: #555;
+  color: white;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.auth-actions button:hover {
+  background: black;
+}
+
+.auth-actions a {
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+}
+
+/* INFO TEXT */
+.auth-info {
+  margin: 20px 0;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* REGISTER */
+.register-section {
+  margin-top: 40px;
+}
+
+.register-section h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.register-section p {
+  font-size: 14px;
+  color: #666;
+}
+
+.register-section button {
+  margin-top: 10px;
+  padding: 12px 25px;
+  background: #ddd;
+  border: none;
+  cursor: pointer;
+}
+
+.register-section button:hover {
+  background: #bbb;
+}
+
+/* ===================== */
+/* 🔥 RESPONSIVE BREAKPOINTS */
+/* ===================== */
+
+/* TABLET */
+@media (max-width: 768px) {
+  .auth-container {
+    margin: 60px auto;
+    padding: 15px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .auth-container {
+    margin: 40px 15px;
+    padding: 10px;
+  }
+
+  .auth-container h2 {
+    font-size: 20px;
+  }
+
+  .auth-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .auth-actions button {
+    width: 100%;
+  }
+
+  .auth-actions a {
+    text-align: center;
+  }
+
+  .register-section button {
+    width: 100%;
+  }
+}
