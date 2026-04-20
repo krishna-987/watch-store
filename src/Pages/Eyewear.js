@@ -15,9 +15,9 @@ function Eyewear() {
 
   // ✅ FETCH ONLY EYEWEAR
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/store/eyewear/")
+    fetch("https://watch-store-nc7y.onrender.com/api/store/eyewear/")
       .then((res) => res.json())
-      .then((data) => setItems(data))
+      .then((data) => setIt ems(data))
       .catch((err) => console.error("API ERROR:", err));
   }, []);
 
@@ -51,7 +51,7 @@ function Eyewear() {
                 src={
                   item.image?.startsWith("http")
                     ? item.image
-                    : `http://127.0.0.1:8000${item.image}`
+                    : `https://watch-store-nc7y.onrender.com${item.image}`
                 }
                 alt={item.name}
               />

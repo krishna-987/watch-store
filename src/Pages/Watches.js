@@ -21,8 +21,7 @@ function Watches() {
 
   // ✅ FETCH DATA FROM BACKEND
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/store/products/")
-      .then((res) => res.json())
+fetch("https://watch-store-nc7y.onrender.com/api/store/products/")      .then((res) => res.json())
       .then((data) => {
         console.log("API DATA:", data); // debug
 
@@ -74,7 +73,8 @@ function Watches() {
                 src={
                   item.image?.startsWith("http")
                     ? item.image
-                    : `http://127.0.0.1:8000${item.image}`
+                    
+                    : `https://watch-store-nc7y.onrender.com${item.image}`
                 }
                 alt={item.name}
                 className="watch-img"

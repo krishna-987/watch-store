@@ -15,7 +15,7 @@ function Accessories() {
 
   const itemsPerPage = 6;
 useEffect(() => {
-  fetch("http://127.0.0.1:8000/api/store/products/")
+  fetch("https://watch-store-nc7y.onrender.com/api/store/products/")
     .then((res) => res.json())
     .then((data) => {
       const acc = data.filter(
@@ -64,7 +64,7 @@ useEffect(() => {
                 src={
                   item.image?.startsWith("http")
                     ? item.image
-                    : `http://127.0.0.1:8000${item.image}`
+                    : `https://watch-store-nc7y.onrender.com${item.image}`
                 }
                 alt={item.name}
                 className="watch-img"
