@@ -19,20 +19,22 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'price', 'image', 'category', 'category_name']
 
     def get_image(self, obj):
-        if obj.image:
-            try:
-                url = obj.image.url
-
-                # ✅ If Cloudinary (already full URL)
-                if url.startswith("http"):
-                    return url
-
-                # ✅ If local media → convert to full URL
-                return f"https://watch-store-nc7y.onrender.com{url}"
-
-            except:
+        try:
+            if not obj.image:
                 return None
-        return None
+
+            url = obj.image.url
+
+            # ✅ Cloudinary (already full URL)
+            if url.startswith("http"):
+                return url.replace("http://", "https://")
+
+            # ✅ Local development
+            return f"http://127.0.0.1:8000{url}"
+
+        except Exception as e:
+            print("IMAGE ERROR:", e)
+            return None
 
 
 # ================= STORE LOCATION =================
