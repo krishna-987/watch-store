@@ -14,16 +14,16 @@ ALLOWED_HOSTS = [
 ]
 
 
-# ✅ APPS
+# ✅ INSTALLED APPS
 INSTALLED_APPS = [
     'store',
     'accounts',
     'cart',
     'orders',
+    'newsletter',
 
     'corsheaders',
     'rest_framework',
-    'newsletter',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
 # ✅ MIDDLEWARE
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -96,35 +97,36 @@ USE_I18N = True
 USE_TZ = True
 
 
-# ✅ STATIC
+# ✅ STATIC FILES
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'   # ✅ important for deploy
 
 
-# ✅ MEDIA
+# ✅ MEDIA FILES
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 
-# ✅ EMAIL
+# ✅ EMAIL (⚠️ move to .env in production)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = 'krishnarudranair@gmail.com'
-EMAIL_HOST_PASSWORD = 'ijcb xvgt ijgs xmzv'
+EMAIL_HOST_USER = 'your_email@gmail.com'
+EMAIL_HOST_PASSWORD = 'your_app_password'
 
 
-# ✅ RAZORPAY
-RAZORPAY_KEY_ID = "rzp_test_SXU092TOX2b6WJ"
-RAZORPAY_KEY_SECRET = "qnQevyC6dS4CpA44Ws4MDV8p"
+# ✅ RAZORPAY (⚠️ move to .env)
+RAZORPAY_KEY_ID = "your_key"
+RAZORPAY_KEY_SECRET = "your_secret"
 
 
 # ✅ CORS
 CORS_ALLOW_ALL_ORIGINS = True
 
 
-# ✅ DRF + JWT
+# ✅ DRF
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -132,7 +134,7 @@ REST_FRAMEWORK = {
 }
 
 
-# ✅ JWT (FIXED)
+# ✅ JWT
 SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
@@ -143,3 +145,15 @@ SIMPLE_JWT = {
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
+
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+cloudinary.config(
+    cloud_name="dsm5nz7xb",
+    api_key="346983176462263",
+    api_secret="vyhE9Prto1fa9PtoZL4QqOkpKG8"
+)
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

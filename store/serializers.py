@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Category, Product
+from .models import Category, Product, StoreLocation, AppDownload, Favorite, Order
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -8,15 +8,24 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
-
 class ProductSerializer(serializers.ModelSerializer):
+    category_name = serializers.CharField(source='category.name', read_only=True)
+    image = serializers.SerializerMethodField()   # ✅ FIX
+
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = ['id', 'name', 'price', 'image', 'category', 'category_name']
 
-from rest_framework import serializers
-from .models import StoreLocation
+    def get_image(self, obj):
+        request = self.context.get('request')
+        if obj.image:
+            try:
+                # ✅ returns full URL (Cloudinary or local)
+                return obj.image.url
+            except:
+                return None
+        return None
+
 
 class StoreLocationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,17 +33,11 @@ class StoreLocationSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-from rest_framework import serializers
-from .models import AppDownload
-
 class AppDownloadSerializer(serializers.ModelSerializer):
     class Meta:
         model = AppDownload
         fields = '__all__'
 
-
-
-from .models import Favorite
 
 class FavoriteSerializer(serializers.ModelSerializer):
     class Meta:
@@ -42,27 +45,7 @@ class FavoriteSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-from rest_framework import serializers
-from .models import Order
-
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = '__all__'
-
-
-from rest_framework import serializers
-from .models import Product
-
-class ProductSerializer(serializers.ModelSerializer):
-    image = serializers.SerializerMethodField()
-
-    class Meta:
-        model = Product
-        fields = ['id', 'name', 'price', 'image']
-
-    def get_image(self, obj):
-        request = self.context.get('request')
-        if obj.image:
-            return request.build_absolute_uri(obj.image.url)
-        return None

@@ -1,6 +1,7 @@
 from django.db import models
+from cloudinary.models import CloudinaryField   # ✅ ADD THIS
 
-
+# ---------------- CATEGORY ----------------
 class Category(models.Model):
     name = models.CharField(max_length=100)
 
@@ -8,19 +9,20 @@ class Category(models.Model):
         return self.name
 
 
+# ---------------- PRODUCT ----------------
 class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.IntegerField()
-    image = models.ImageField(upload_to='products/')
+
+    image = CloudinaryField('image')   # ✅ CHANGED HERE
+
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
-    
 
 
-from django.db import models
-
+# ---------------- STORE LOCATION ----------------
 class StoreLocation(models.Model):
     name = models.CharField(max_length=200)
     address = models.TextField()
@@ -32,7 +34,7 @@ class StoreLocation(models.Model):
         return self.name
 
 
-
+# ---------------- APP DOWNLOAD ----------------
 class AppDownload(models.Model):
     title = models.CharField(max_length=200)
     description1 = models.CharField(max_length=200)
@@ -47,8 +49,9 @@ class AppDownload(models.Model):
         return self.title
 
 
-from django.db import models
+# ---------------- PAYMENT ----------------
 from django.contrib.auth.models import User
+
 class Payment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     order_id = models.CharField(max_length=200, unique=True)
@@ -59,10 +62,7 @@ class Payment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
-
-
-from django.contrib.auth.models import User
-
+# ---------------- FAVORITE ----------------
 class Favorite(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey("Product", on_delete=models.CASCADE)
@@ -74,8 +74,7 @@ class Favorite(models.Model):
         return f"{self.user.username} - {self.product}"
 
 
-from django.db import models
-
+# ---------------- ORDER ----------------
 class Order(models.Model):
     name = models.CharField(max_length=100)
     total = models.IntegerField()
@@ -85,9 +84,7 @@ class Order(models.Model):
         return self.name
 
 
-
-from django.contrib.auth.models import User
-
+# ---------------- REVIEW ----------------
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name="reviews")
