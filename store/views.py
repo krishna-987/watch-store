@@ -152,7 +152,6 @@ def remove_favorite(request, product_id):
 
     return Response({"removed": True})
 
-
 # ================= ADD REVIEW =================
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
